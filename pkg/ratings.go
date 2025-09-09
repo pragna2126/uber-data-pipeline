@@ -57,5 +57,3 @@ func RatingsByVehicleType() []Result {
 	return results
 }
 
-
-//git
