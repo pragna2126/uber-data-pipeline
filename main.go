@@ -14,6 +14,7 @@ import (
 
 func main(){
 	logger.GetLogger().Sugar().Info()
+	config.Init()
 	sig := make(chan os.Signal, 1)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 
@@ -27,7 +28,7 @@ func main(){
 	})
 	routes.MountRoutes(app)
 	
-	config.Init()
+	
 
 	app.StartAsync()
 	logger.GetLogger().Sugar().Info("server has started")

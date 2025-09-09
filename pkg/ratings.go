@@ -4,6 +4,7 @@ import(
 	"analytics-layer/config"
 )
 type Result struct {
+	RatingsBy string
     VehicleType string
     Avg float64
 }
@@ -37,6 +38,8 @@ func RatingsByVehicleType() []Result {
 		Order("avg DESC").
 		Limit(1).
 		Scan(&highestCustomerRated)
+
+	highestCustomerRated.RatingsBy="Customer"
 	results = append(results, highestCustomerRated)
 
 	var highestDriverRated Result
@@ -47,6 +50,8 @@ func RatingsByVehicleType() []Result {
 		Order("avg DESC").
 		Limit(1).
 		Scan(&highestDriverRated)
+
+	highestDriverRated.RatingsBy="Driver"
 	results = append(results, highestDriverRated)
 
 	return results
