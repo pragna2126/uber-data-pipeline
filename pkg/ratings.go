@@ -57,3 +57,4 @@ func RatingsByVehicleType() []Result {
 	return results
 }
 
+//changes
